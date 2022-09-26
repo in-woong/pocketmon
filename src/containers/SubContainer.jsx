@@ -3,7 +3,7 @@ import AttackForm from '../components/AttackForm';
 import Card from '../components/Card';
 import EnergyController from '../components/EnergyController';
 
-const MainContainer = ({ img, name, hp, setIsLoading, isLoading, setCoin }) => {
+const SubContainer = ({ img, name, hp, setIsLoading, isLoading, setCoin }) => {
   const [health, setHealth] = useState(hp);
   const [attack, setAttack] = useState(0);
   const handleSubmit = (e) => {
@@ -44,7 +44,6 @@ const MainContainer = ({ img, name, hp, setIsLoading, isLoading, setCoin }) => {
     }
     setGotEnergyNum(newEnergyNum.toString());
   };
-
   const getRandom = (min, max) => Math.random() * (max - min) + min;
 
   const handleRandom = () => {
@@ -59,10 +58,9 @@ const MainContainer = ({ img, name, hp, setIsLoading, isLoading, setCoin }) => {
       }
       setIsLoading(false);
     }, 2000);
-    setCoin(false);
   };
   return (
-    <div className='p-2 h-1/2 min-w-full bg-slate-400'>
+    <div className='p-2 rotate-180 h-1/2 min-w-full bg-slate-400'>
       <Card
         name={name}
         img={img}
@@ -84,4 +82,4 @@ const MainContainer = ({ img, name, hp, setIsLoading, isLoading, setCoin }) => {
   );
 };
 
-export default MainContainer;
+export default SubContainer;

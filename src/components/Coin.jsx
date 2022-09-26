@@ -1,4 +1,12 @@
 const Coin = ({ coin }) => {
-  return coin ? <h1>"앞면"</h1> : <h2>"뒷면"</h2>;
+  return (
+    <>
+      {coin ? (
+        <button className='btn btn-warning btn-lg btn-circle'>앞면</button>
+      ) : (
+        <button className='btn  btn-warning btn-lg btn-circle'>뒷면</button>
+      )}
+    </>
+  );
 };
 export default Coin;
