@@ -5,11 +5,20 @@ import img2 from '../lib/img/leezamong.png';
 import SubContainer from '../containers/SubContainer';
 import CoinContainer from '../containers/CoinContainer';
 
+import { useNavigate } from 'react-router-dom';
+
 const MainPage = () => {
   const [coin, setCoin] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
   const first = JSON.parse(localStorage.getItem('first'));
+  if (!first) {
+    navigate('/');
+  }
   const second = JSON.parse(localStorage.getItem('second'));
+  if (!second) {
+    navigate('/second');
+  }
   return (
     <div className='artboard bg-slate-400'>
       <SubContainer
