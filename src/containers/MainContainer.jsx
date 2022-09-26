@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import AttackForm from '../components/AttackForm';
 import Card from '../components/Card';
-import Coin from '../components/Coin';
-import CoinLoading from '../components/CoinLoading';
 import EnergyController from '../components/EnergyController';
 
-const MainContainer = () => {
-  const [coin, setCoin] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+const MainContainer = ({ img, setIsLoading, setCoin }) => {
   const [health, setHealth] = useState(0);
   const [attack, setAttack] = useState(0);
   const handleSubmit = (e) => {
@@ -36,23 +32,28 @@ const MainContainer = () => {
     const newEnergyNum = Number(gotEnergyNum) + 1;
     if (newEnergyNum > 5) return;
     setGotEnergyNum(newEnergyNum.toString());
+    console.log(gotEnergyNum);
   };
 
   const MinusEnergy = () => {
     const newEnergyNum = Number(gotEnergyNum) - 1;
-    if (newEnergyNum <= 0) return;
+    if (newEnergyNum < 0) return;
     setGotEnergyNum(newEnergyNum.toString());
+    console.log(gotEnergyNum);
   };
 
   const getRandom = (min, max) => Math.random() * (max - min) + min;
 
   const handleRandom = () => {
     const random = Math.floor(getRandom(0, 2));
+    console.log('random', random);
     setIsLoading(true);
     setTimeout(() => {
       if (random) {
+        console.log('false');
         setCoin(false);
       } else {
+        console.log('true');
         setCoin(true);
       }
       setIsLoading(false);
@@ -60,17 +61,22 @@ const MainContainer = () => {
   };
   return (
     <div className='p-2 min-w-full bg-slate-400'>
-      <Card health={health} handleNum={handleNum} num={gotEnergyNum} />
+      <Card
+        img={img}
+        health={health}
+        handleNum={handleNum}
+        num={gotEnergyNum}
+      />
       <AttackForm
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         attack={attack}
       />
-      <EnergyController PlusEnergy={PlusEnergy} MinusEnergy={MinusEnergy} />
-      {isLoading ? <CoinLoading /> : <Coin />}
-      <button className='btn' onClick={handleRandom}>
-        Coin
-      </button>
+      <EnergyController
+        PlusEnergy={PlusEnergy}
+        MinusEnergy={MinusEnergy}
+        handleRandom={handleRandom}
+      />
     </div>
   );
 };
