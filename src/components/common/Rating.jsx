@@ -2,15 +2,15 @@ const Rating = ({ num, handleNum }) => {
   return (
     <div className='rating gap-1'>
       <input
-        type='radio'
-        name='rating'
+        type='checkbox'
+        name='rating-hidden'
         value='1'
         className='mask mask-heart bg-red-400'
         checked={num === '1'}
         onChange={handleNum}
       />
       <input
-        type='radio'
+        type='checkbox'
         name='rating'
         value='2'
         className='mask mask-heart bg-orange-400'
@@ -18,7 +18,7 @@ const Rating = ({ num, handleNum }) => {
         onChange={handleNum}
       />
       <input
-        type='radio'
+        type='checkbox'
         name='rating'
         value='3'
         className='mask mask-heart bg-yellow-400'
@@ -26,7 +26,7 @@ const Rating = ({ num, handleNum }) => {
         onChange={handleNum}
       />
       <input
-        type='radio'
+        type='checkbox'
         name='rating'
         value='4'
         className='mask mask-heart bg-lime-400'
@@ -34,7 +34,7 @@ const Rating = ({ num, handleNum }) => {
         onChange={handleNum}
       />
       <input
-        type='radio'
+        type='checkbox'
         name='rating'
         value='5'
         className='mask mask-heart bg-green-400'
