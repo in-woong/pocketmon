@@ -9,7 +9,7 @@ const Card = ({ img, name = 'text', health = 0, handleNum, num }) => {
       <div className='card-body'>
         <div className='flex justify-between align-middle'>
           <h2 className='card-title'>{name}</h2>
-          <div className='badge text-2xl'>{health}</div>
+          <div className='badge text-xl'>{health}</div>
         </div>
         <Rating num={num} handleNum={handleNum} />
       </div>
